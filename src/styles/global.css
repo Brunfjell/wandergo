@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+  --primary: 85, 193, 92;
+  --secondary: 67, 162, 203;
+  --offwhite: 217, 217, 217;
+  --dark: 30, 30, 30;
+}
+
+@theme {
+  --primary: oklch(85, 193, 92);
+}
+
+.text-outline {
+  color: white;
+  -webkit-text-stroke: 13px #22c55e; /* green-400 */
+  paint-order: stroke fill;
+}
