@@ -62,7 +62,7 @@ export default function Home() {
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40 z-0"></div>
         <div 
-          className="bg-[url('./WanderHeroBg.png')] bg-cover bg-center absolute inset-0 z-0"
+          className="bg-[url('/WanderHeroBg.png')] bg-cover bg-center absolute inset-0 z-0"
         ></div>
         
         <motion.div 

@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Home from '../pages/Home';
 import Services from '../pages/Services';
 import AppointmentForm from '../pages/AppointmentForm';
@@ -12,7 +12,7 @@ import ManageMessages from '../admin/ManageMessages';
 import Analytics from '../admin/Analytics';
 import PrivateRoute from './PrivateRoute';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Home />,
