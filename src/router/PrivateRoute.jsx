@@ -28,10 +28,5 @@ export default function PrivateRoute({ children }) {
     return <Navigate to="/admin/login" state={{ from: location }} replace />;
   }
 
-  // Additional role verification if you have roles in your system
-  // if (user.uid !== yourAdminUID) {
-  //   return <Navigate to="/" replace />;
-  // }
-
   return children;
 }

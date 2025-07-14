@@ -23,9 +23,9 @@ const AdminSidebar = () => {
   ];
 
   return (
-    <div className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-blue-800 text-white transition-all duration-300 flex flex-col h-full`}>
+    <div className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-green-800 text-white transition-all duration-300 flex flex-col h-full`}>
       {/* Logo/Sidebar Toggle */}
-      <div className="flex items-center justify-between p-4 border-b border-blue-700">
+      <div className="flex items-center justify-between p-4 border-b border-green-700">
         {sidebarOpen ? (
           <h1 className="text-xl font-bold">Wandergo Admin</h1>
         ) : (
@@ -33,7 +33,7 @@ const AdminSidebar = () => {
         )}
         <button 
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-1 rounded-lg hover:bg-blue-700"
+          className="p-1 rounded-lg hover:bg-green-700"
         >
           {sidebarOpen ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,7 +56,7 @@ const AdminSidebar = () => {
                 to={item.path}
                 end
                 className={({ isActive }) =>
-                  `flex items-center p-3 rounded-lg transition-colors ${isActive ? 'bg-blue-700' : 'hover:bg-blue-700'}`
+                  `flex items-center p-3 rounded-lg transition-colors ${isActive ? 'bg-green-700' : 'hover:bg-green-700'}`
                 }
               >
                 <item.icon className="h-5 w-5" />
@@ -69,7 +69,7 @@ const AdminSidebar = () => {
 
       {/* Collapsed Menu Hint */}
       {!sidebarOpen && (
-        <div className="absolute left-20 ml-1 px-2 py-1 bg-blue-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block">
+        <div className="absolute left-20 ml-1 px-2 py-1 bg-green-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity hidden lg:block">
           {navItems.map(item => (
             <div key={item.name} className="whitespace-nowrap py-1">
               {item.name}

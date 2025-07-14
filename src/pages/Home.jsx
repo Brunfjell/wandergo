@@ -68,7 +68,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center px-4 max-w-4xl mx-auto"
         >
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold italic inline-block -rotate-3 text-outline text-white mb-6 drop-shadow-lg">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-28 font-bold italic inline-block -rotate-3 text-outline text-white mb-6 drop-shadow-lg">
             Ready to <br /> Wander?
           </h1>
 

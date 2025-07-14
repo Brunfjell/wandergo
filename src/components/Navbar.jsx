@@ -30,8 +30,6 @@ export function Navbar({ darkMode, toggleDarkMode }) {
 
   return (
     <motion.header 
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         scrolled 
           ? 'bg-white/90 dark:bg-stone-900/90 backdrop-blur-md shadow-sm' 
@@ -90,9 +88,6 @@ export function Navbar({ darkMode, toggleDarkMode }) {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden overflow-hidden"
           >

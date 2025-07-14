@@ -1,32 +1,40 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { FiCheck, FiClock } from 'react-icons/fi';
 
 const FormStep2 = ({ formData, onChange }) => {
-  const [cars, setCars] = useState([]);
+  const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCars = async () => {
+    const fetchVehicles = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'services'));
-        const carsData = querySnapshot.docs.map(doc => ({
+        // Only fetch available vehicles
+        const q = query(
+          collection(db, 'vehicles'),
+          where('isAvailable', '==', true)
+        );
+        
+        const querySnapshot = await getDocs(q);
+        const vehiclesData = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
-        setCars(carsData);
+        
+        setVehicles(vehiclesData);
       } catch (error) {
-        console.error('Error fetching cars:', error);
+        console.error('Error fetching vehicles:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCars();
+    fetchVehicles();
   }, []);
 
-  const handleSelect = (carId) => {
-    onChange(prev => ({ ...prev, carId }));
+  const handleSelect = (vehicleId) => {
+    onChange(prev => ({ ...prev, vehicleId }));
   };
 
   if (loading) {
@@ -38,34 +46,59 @@ const FormStep2 = ({ formData, onChange }) => {
   }
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-medium text-gray-800 mb-4">Select Vehicle</h3>
+    <div className="space-y-6">
+      <div className="text-center">
+        <h3 className="text-xl font-semibold text-gray-800">Select Your Vehicle</h3>
+        <p className="text-gray-600 mt-1">Choose from our available fleet</p>
+      </div>
       
-      <div className="grid grid-cols-1 gap-3">
-        {cars.map(car => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {vehicles.map(vehicle => (
           <div 
-            key={car.id}
-            onClick={() => handleSelect(car.id)}
-            className={`p-4 border rounded-lg cursor-pointer transition-colors ${
-              formData.carId === car.id
-                ? 'border-[#55C15C] bg-[#55C15C]/10'
-                : 'border-gray-300 hover:border-[#43A2CB]'
+            key={vehicle.id}
+            onClick={() => handleSelect(vehicle.id)}
+            className={`p-4 border rounded-xl cursor-pointer transition-all ${
+              formData.vehicleId === vehicle.id
+                ? 'border-[#55C15C] ring-2 ring-[#55C15C]/30 bg-[#55C15C]/5'
+                : 'border-gray-200 hover:border-[#43A2CB] hover:shadow-md'
             }`}
           >
-            <div className="flex items-center">
-              <div className="w-16 h-16 bg-gray-200 rounded-md mr-4 overflow-hidden">
-                {car.imageUrl && (
-                  <img src={car.imageUrl} alt={car.name} className="w-full h-full object-cover" />
-                )}
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-800">{car.name}</h4>
-                <p className="text-sm text-gray-600">₱{car.cost.toLocaleString()} per day</p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1">
+                <div className="flex justify-between items-start">
+                  <h4 className="font-medium text-gray-800 text-lg">{vehicle.name}</h4>
+                  {formData.vehicleId === vehicle.id && (
+                    <FiCheck className="text-[#55C15C] h-5 w-5" />
+                  )}
+                </div>
+                
+                <div className="mt-2 grid grid-cols-1 gap-2 text-sm">
+                  <div className="flex items-center text-gray-600">
+                    <span className="font-medium mr-1">Type:</span>
+                    <span className="capitalize">{vehicle.Type}</span>
+                  </div>
+                  <div className="flex items-center text-gray-600">
+                    <span className="font-medium mr-1">Seats:</span>
+                    <span>{vehicle.Seats}</span>
+                  </div>
+                  <div className="flex items-center text-gray-600">
+                    <span className="font-medium mr-1">Fuel:</span>
+                    <span className="capitalize">{vehicle.fuelType}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+      
+      {vehicles.length === 0 && !loading && (
+        <div className="text-center py-8">
+          <FiClock className="mx-auto h-10 w-10 text-gray-400" />
+          <p className="mt-2 text-gray-600">No available vehicles at the moment</p>
+          <p className="text-sm text-gray-500">Please check back later or contact us</p>
+        </div>
+      )}
     </div>
   );
 };

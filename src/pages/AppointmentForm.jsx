@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiCalendar, FiClock, FiUser, FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
 import AvailabilityCalendar from '../components/AvailabilityCalendar';
-import InfoModalLauncher from '../components/InfoModalLauncher';
+import { useModalSystem } from '../components/modals/ModalSystem/useModalSystem';
+import ModalButton from '../components/modals/ModalSystem/ModalButton';
+import ModalContainer from '../components/modals/ModalSystem/ModalContainer';
 import FormStep1 from '../components/FormStep1';
 import FormStep2 from '../components/FormStep2';
 import FormStep3 from '../components/FormStep3';
@@ -30,6 +32,14 @@ export default function AppointmentForm() {
     // Reset time when date changes
     setSelectedTime('');
   };
+
+  const { modals, sections, loading } = useModalSystem();
+  const [activeModal, setActiveModal] = useState(null);
+
+  // Get sections for the active modal
+  const modalSections = sections.filter(s => s.modalId === activeModal?.id);
+
+  if (loading) return <div className="p-4 text-center">Loading information...</div>;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -108,23 +118,26 @@ export default function AppointmentForm() {
               )}
               
               {/* Information Buttons */}
-              <div className="space-y-3">
-                <InfoModalLauncher 
-                  title="Rates & Fees" 
-                  content="Our pricing structure and additional charges..."
-                  icon="💰"
-                />
-                <InfoModalLauncher 
-                  title="Requirements" 
-                  content="Documents needed for rental..."
-                  icon="📋"
-                />
-                <InfoModalLauncher 
-                  title="FAQs" 
-                  content="Common questions about our rentals..."
-                  icon="❓"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {/* Dynamic modal buttons */}
+                {modals.map(modal => (
+                  <ModalButton
+                    key={modal.id}
+                    modal={modal}
+                    onClick={() => setActiveModal(modal)}
+                  />
+                ))}
               </div>
+
+              {/* Modal container */}
+              {activeModal && (
+                <ModalContainer
+                  isOpen={!!activeModal}
+                  onClose={() => setActiveModal(null)}
+                  modal={activeModal}
+                  sections={modalSections}
+                />
+              )}
             </div>
             
             {/* Right Column - Form */}

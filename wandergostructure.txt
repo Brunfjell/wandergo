@@ -1,0 +1,107 @@
+wandergo-carrental/
+├── public/
+│   └── index.html, favicon, etc.
+├── src/
+│   ├── assets/                # Images, icons
+│   ├── components/            # Reusable UI parts
+│   │   ├── AvailabilityCalendar.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   ├── FormStep1.jsx
+│   │   ├── FormStep2.jsx
+│   │   ├── FormStep3.jsx
+│   │   ├── InfoModalLauncher.jsx
+│   │   └── Navbar.jsx
+│   ├── pages/                 # Public pages
+│   │   ├── Home.jsx
+│   │   ├── Services.jsx
+│   │   ├── AppointmentForm.jsx
+│   │   ├── Contact.jsx
+│   │   └── ThankYou.jsx
+│   ├── admin/                 # Admin section (protected route)
+│   │   ├── AdminLogin.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── ManageServices.jsx
+│   │   ├── ManageAppointments.jsx
+│   │   ├── ManageMessages.jsx
+│   │   └── Analytics.jsx      # (Optional)
+│   ├── firebase/              # Firebase config
+│   │   └── config.js
+│   ├── routes/                # Public + Admin routes
+│   │   └── Router.jsx
+│   ├── utils/                 # Helpers (e.g., validation)
+│   ├── styles/ 
+│   │   └── global.css
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+├── tailwind.config.js
+├── vite.config.js
+├── package.json
+└── README.md
+
+
+Firestore Structure
+
+/services
+  └── {serviceId}
+      ├── name: "Toyota Vios"
+      ├── description: "Great fuel economy"
+      ├── cost: 500
+      ├── imageUrl: "...uploaded..."
+      ├── isAvailable: true
+      └── createdAt: timestamp
+
+/appointments
+  └── {appointmentId}
+      ├── fullName: "Juan Cruz"
+      ├── phone: "0917..."
+      ├── email: "juan@example.com"
+      ├── address: "Makati, Metro Manila"
+      ├── serviceID: "ID from services docName"
+      ├── date: "2025-07-20"
+      ├── timeSlot: "10:00 AM"
+      ├── status: "pending"  // approved, cancelled
+      └── createdAt: timestamp
+
+/messages
+  └── {messageId}
+      ├── fullName
+      ├── email
+      ├── message
+      ├── isRead: false
+      └── createdAt
+
+/offers
+  └── {offerId}
+      ├── title: string
+      ├── description: string
+      ├── cost: number
+      └── validUntil: timestamp
+
+/vehicles
+  └── {vehicleId}
+      ├── name: string (e.g., "Toyota Vios")
+      ├── description: string
+      ├── imageUrl: string
+      ├── isAvailable: boolean
+      ├── type: string (sedan, suv, etc.)
+      ├── seats: number
+      ├── fuelType: string
+      ├── transmission: string
+      ├── mileage: string
+      ├── features: array of strings
+      └── createdAt: timestamp
+
+/testimonials
+  └── {testimonialId}
+      ├── name
+      ├── comment
+      ├── date: timestamp
+      ├── display: false
+      └── rating: num
+
+/admins (for verifying admin identity)
+  └── {uid}
+      ├── email: "admin@domain.com"
+      └── role: "admin"
