@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { FiCheck, FiClock, FiUsers, FiDroplet, FiNavigation } from 'react-icons/fi';
@@ -31,9 +29,7 @@ export default function Services() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 mt-14">
-      <Navbar />
-      
+    <div className="min-h-screen bg-stone-200 mt-14">
       <main className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.h1 
@@ -123,8 +119,6 @@ export default function Services() {
           )}
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 }

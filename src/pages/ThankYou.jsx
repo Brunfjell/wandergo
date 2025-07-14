@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { Navbar } from '../components/NavBar';
-import { Footer } from '../components/footer';
 import { Link } from 'react-router-dom';
 
 export default function ThankYou() {
@@ -12,8 +10,6 @@ export default function ThankYou() {
 
   return (
     <div className="min-h-screen">
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      
       <main className="py-20 px-4 text-center">
         <div className="container mx-auto max-w-2xl">
           <motion.div 
@@ -40,8 +36,6 @@ export default function ThankYou() {
           </motion.div>
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 }

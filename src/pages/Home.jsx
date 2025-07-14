@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { collection, getDocs, query, limit } from 'firebase/firestore';
 import { db } from '../firebase/config';
-import { Navbar } from '../components/Navbar';
 import { FiArrowRight, FiStar, FiCheckCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
@@ -56,8 +55,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40 z-0"></div>
@@ -88,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* Special Offers Section */}
-      <section className="py-20 px-4 sm:px-6 bg-white">
+      <section className="py-20 px-4 sm:px-6 bg-stone-100">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -120,8 +117,8 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="h-48 bg-emerald-600 flex items-center justify-center p-6">
-                    <span className="text-white text-2xl md:text-3xl font-bold text-center">{offer.title}</span>
+                  <div className="h-24 bg-emerald-600 flex items-center justify-center p-6">
+                    <span className="text-white text-4xl md:text-5xl font-bold text-center">{offer.title}</span>
                   </div>
                   <div className="p-6">
                     <p className="text-gray-600 mb-4">
@@ -149,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4 sm:px-6 bg-gray-50">
+      <section className="py-20 px-4 sm:px-6 bg-stone-200">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -218,7 +215,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 px-4 sm:px-6 bg-white">
+      <section className="py-20 px-4 sm:px-6 bg-stone-100">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -226,9 +223,16 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Wandergo
-            </h2>
+            <div className="text-3xl sm:text-4xl font-bold gap-10 mb-4">
+              <span className="text-gray-900">Why Choose </span>
+              <span className="italic -rotate-3 inline-block">
+                <span className="text-green-600">W</span>
+                <span className="text-gray-900">ander</span>
+                <span className="text-cyan-600">G</span>
+                <span className="text-gray-900">o </span>
+              </span>
+              <span className="text-gray-900">?</span>
+            </div>
             <div className="w-20 h-1 bg-emerald-500 mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               We go the extra mile to make your rental experience exceptional

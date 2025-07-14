@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
 import { FiArrowRight, FiCalendar, FiClock, FiUser, FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
 import AvailabilityCalendar from '../components/AvailabilityCalendar';
 import InfoModalLauncher from '../components/InfoModalLauncher';
@@ -58,9 +56,7 @@ export default function AppointmentForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 mt-14">
-      <Navbar />
-      
+    <div className="min-h-screen bg-stone-200 mt-14 md:px-16">    
       <main className="py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h1 
@@ -236,8 +232,6 @@ export default function AppointmentForm() {
           </div>
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiFacebook, FiInstagram, FiMail, FiPhone, FiMapPin, FiArrowRight } from 'react-icons/fi';
+import { FaReact } from 'react-icons/fa';
+import { SiVite, SiFirebase, SiNodedotjs } from 'react-icons/si';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,7 +15,7 @@ export function Footer() {
       className="bg-stone-900 py-16 px-4"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 px-10">
           {/* Brand Section */}
           <div>
             <Link 
@@ -92,32 +94,38 @@ export function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-lg font-bold text-sky-500 mb-5">Stay Updated</h3>
-            <p className="text-gray-100 mb-4">Subscribe for special offers and updates</p>
-            <form className="space-y-3">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="text-gray-100 w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#43A2CB]"
-                required
-              />
-              <button 
-                type="submit" 
-                className="px-6 py-3 bg-[#4aa550] text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
         </div>
+        <div className="border-t border-gray-200 pt-8 text-sm text-stone-700">
+          <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
+            
+            <div>
+              <p className="font-semibold">&copy; {currentYear} Wandergo Car Rental</p>
+              <p>All rights reserved.</p>
+            </div>
 
-        <div className="border-t border-gray-200 pt-8 text-center">
-          <p className="text-stone-700 text-sm">
-            &copy; {currentYear} Wandergo Car Rental. All rights reserved.
-          </p>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="font-bold">Made by</p>
+                <Link to='https://brunfjell.github.io/brunfjell-portfolio/' className="flex items-center">
+                  <img 
+                    src="/BrunLogo-bwbg.png" 
+                    alt="Brunfjell Logo" 
+                    className="h-6 w-6 object-contain"
+                  />
+                  <p className='font-bold font-sans text-lg'>BRUNFJELL</p>
+                </Link>
+              </div>
+              <div>
+                <p className="font-bold">Made with</p>
+                <div className="flex items-center gap-2">
+                  <FaReact className="h-6 w-6 text-stone-700" />
+                  <SiVite className="h-6 w-6 text-stone-700" />
+                  <SiNodedotjs className="h-6 w-6 text-stone-700" />
+                  <SiFirebase className="h-6 w-6 text-stone-700" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </motion.footer>

@@ -103,7 +103,7 @@ export function Navbar({ darkMode, toggleDarkMode }) {
                   to={link.path} 
                   className={`block px-3 py-2 rounded-md text-sm font-medium ${
                     location.pathname === link.path
-                      ? 'bg-primary/10 text-stone-900'
+                      ? 'bg-green-600 text-stone-100'
                       : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
                   }`}
                 >

@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
 import { FiMail, FiPhone, FiMapPin, FiSend, FiStar } from 'react-icons/fi';
 import { useState } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -71,9 +69,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 mt-10">
-      <Navbar />
-      
+    <div className="min-h-screen bg-stone-200 mt-10">    
       <main className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h1 
@@ -283,8 +279,6 @@ export default function Contact() {
           </div>
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 }
