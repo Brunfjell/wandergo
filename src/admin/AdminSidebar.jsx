@@ -25,7 +25,7 @@ const AdminSidebar = () => {
   return (
     <div className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-green-800 text-white transition-all duration-300 flex flex-col h-full`}>
       {/* Logo/Sidebar Toggle */}
-      <div className="flex items-center justify-between p-4 border-b border-green-700">
+      <div className="h-14 flex items-center justify-between p-4 border-b border-green-700">
         {sidebarOpen ? (
           <h1 className="text-xl font-bold">Wandergo Admin</h1>
         ) : (

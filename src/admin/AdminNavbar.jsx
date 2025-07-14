@@ -14,7 +14,6 @@ const AdminNavbar = ({ toggleSidebar }) => {
           onClick={toggleSidebar}
           className="p-1 rounded-md text-gray-500 hover:text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 lg:hidden"
         >
-          <FiMenu className="h-6 w-6" />
         </button>
 
         {/* Right side - User controls */}
